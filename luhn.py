@@ -11,8 +11,6 @@
 #       The default value of the count value is 0 which means it will calculate the numbers check-digit,
 #       this can be altered to one to validate a number with a check-digit
 
-
-
 #the core Luhn algorithm
 def coreLuhn(number, count=0):  
     sum = 0
