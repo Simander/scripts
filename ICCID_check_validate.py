@@ -1,15 +1,15 @@
-# An implementation of the Luhn algorithm in Python.
-# Written by Anders Simonsen
+#!/usr/bin/python
+
+# A Python script for calculating the CHECK-digit of an ICCID or
+# validating the ICCID with CHECK-digit.
+# Included is my implementation of the luhn algorithm
+#	
+#	coreLuhn(number, count=0)
+#	|
+#	|_______calc_checkdigit(number)
+#	|_______valid_number(number)
 #
-# the calc_checkdigit(number):
-#	takes a number without the check-digit and calculates the check-digit
-# the valid_number(number):
-#	validates a number with the included check-digit and returns true if number is valid
-#
-# the two methods explained above rely on the coreLuhn(number, count=0)
-#	Takes two parameters, a number, and a count value.
-#	The default value of the count value is 0 which means it will calculate the numbers check-digit,
-#	this can be altered to one to validate a number with a check-digit
+# Author simander 10/1/2016
 
 import sys
 
@@ -36,20 +36,20 @@ def calc_checkdigit(number):
 #takes a number with check-digit included and returns true if the number is valid.
 def valid_number(number):
     return coreLuhn(number, 1) == 0
-	
+
 if len(sys.argv) == 1:
 	print("**help:")
 	print("\tusage: \'ICCID_check_validate.py <ICCID>\' returns \'ICCID+CHECK-DIGIT\'")
-	print("\tusage: \'ICCID_check_validate.py <ICCID> <g>\' returns \'formatted output\'")
 	print("\tusage: \'ICCID_check_validate.py <ICCID+CHECK-DIGIT>\' returns \'True if number is valid\'")
 
 elif len(sys.argv) >=2:
 	NUMBER = sys.argv[1]
 
 	if len(NUMBER) == 19:
-
 		CHECK_DIGIT = str(calc_checkdigit(NUMBER))
 		print(NUMBER + "\t" + CHECK_DIGIT)
 	elif len(NUMBER) == 20:
 		VALID_NUMBER = valid_number(NUMBER)
 		print(VALID_NUMBER)
+	else:
+		print("ICCID must be 19 or 20 digits");
