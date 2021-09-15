@@ -9,7 +9,7 @@ import time
     # Start the scheduler, spawns a daemon thread that acts as an event-loop.
     scheduler.start()
 
-    @author: anders simonsen
+    @author: anders
 """
 
 
